@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+    
+    <flow name="http-listener-using-domain">
+		<http:listener config-ref="HTTP_Listener_config" path="/testDomain" doc:name="Listener-Using Dommain Config" doc:id="8cc49fc2-6c54-43fc-b4f5-2bf734974856" />
+		<logger level="INFO" doc:name="Logger" doc:id="55c3de28-7603-48fb-940a-e2f90844491d" message="Received Http Request "/>
+		<set-payload value="#[output application/json --- {'status':'Success','message':'Thanks for testing demo...'}]" doc:name="Set Payload" mimeType="application/json"/>
+    </flow>
+ </mule>
